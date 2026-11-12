@@ -337,6 +337,187 @@ resultado = multiplicar(5, 4)
 print(resultado)
 ```
 
+## 20. Argumentos con nombre
+
+Los argumentos con nombre (keyword arguments) se pasan indicando el nombre del parámetro. Así, el orden de los argumentos puede variar.
+
+```python
+def saludo(nombre, apellido, lenguaje):
+    print(f'Hola {nombre} {apellido} estas aprendiendo {lenguaje}')
+
+saludo('Daniel', 'Jaimes', 'Python')
+saludo(lenguaje='C#', nombre='Alejandro', apellido='Jaimes')
+```
+
+## 21. Funciones anidadas y ámbito de variables
+
+Una función anidada se llama desde otra función. El ámbito determina desde qué partes del programa se puede acceder a una variable. Una variable creada dentro de una función es local a esa función.
+
+```python
+def mostrar_nombre():
+    nombre = 'Dani'
+    print(nombre)
+
+mostrar_nombre()
+```
+
+Las funciones también se pueden combinar para transformar una entrada en varios pasos:
+
+```python
+print(round(abs(float(input('Ingresa un numero: ')))))
+```
+
+## 22. `*args` y `**kwargs`
+
+`*args` agrupa argumentos posicionales adicionales en una tupla. `**kwargs` agrupa argumentos con nombre adicionales en un diccionario.
+
+```python
+def suma(*args):
+    total = 0
+    for numero in args:
+        total += numero
+    return total
+
+print(suma(1, 5, 3, 10))
+```
+
+```python
+def hola(**kwargs):
+    print('Hola', end=' ')
+    for valor in kwargs.values():
+        print(valor, end=' ')
+
+hola(nombre='Alejandro', apellido='Jimenez')
+```
+
+## 23. Formato de strings
+
+El método `format()` permite insertar valores en un string y controlar cómo se muestran, por ejemplo, su alineación, cantidad de decimales o representación numérica.
+
+```python
+nombre = 'Daniel'
+numero = 3.141519
+
+print('Hola, mi nombre es {:10}. Mucho gusto'.format(nombre))
+print('El numero PI es {:.2f}'.format(numero))
+print('El numero es {:b}'.format(1000))  # binario
+```
+
+También se pueden usar f-strings para insertar valores:
+
+```python
+str_1 = 'Leche'
+str_2 = 'casar'
+print(f'Arroz con {str_1} me quiero {str_2}')
+```
+
+## 24. Módulo `random`
+
+El módulo `random` genera valores pseudoaleatorios y permite elegir o mezclar elementos de una colección.
+
+```python
+import random
+
+print(random.randint(1, 6))  # entero entre 1 y 6, inclusive
+print(random.random())       # decimal entre 0 y 1
+print(random.choice(['Piedra', 'Papel', 'Tijera']))
+
+cartas = ['1', '2', '3', 'J', 'Q', 'K', 'A']
+random.shuffle(cartas)
+print(cartas)
+```
+
+## 25. Manejo de excepciones
+
+Las excepciones son errores que pueden interrumpir el flujo del programa. `try` y `except` permiten manejarlos; `else` se ejecuta si no hubo error y `finally` se ejecuta siempre.
+
+```python
+try:
+    numerador = float(input('Ingresa un numero: '))
+    denominador = float(input('Ingresa otro numero: '))
+    resultado = numerador / denominador
+except ZeroDivisionError:
+    print('No puedes dividir por 0')
+except ValueError:
+    print('Por favor ingresa solo numeros')
+else:
+    print(resultado)
+finally:
+    print('Esto siempre se va a mostrar')
+```
+
+## 26. Manejo de archivos y carpetas
+
+El módulo `os` permite comprobar si una ruta existe y si corresponde a un archivo. Usa rutas relativas para que los ejemplos funcionen en distintos equipos.
+
+```python
+import os
+
+path = 'assets/ejemplo.txt'
+
+if os.path.exists(path):
+    print('La ruta existe')
+    if os.path.isfile(path):
+        print('Es un archivo')
+else:
+    print('La ruta no existe')
+```
+
+### Leer y escribir archivos
+
+`with open(...)` administra la apertura y el cierre del archivo. El modo `'r'` lee y el modo `'w'` escribe, reemplazando el contenido existente.
+
+```python
+path = 'assets/ejemplo.txt'
+
+try:
+    with open(path, 'r', encoding='utf-8') as archivo:
+        print(archivo.read())
+except FileNotFoundError:
+    print('El archivo no fue encontrado')
+```
+
+```python
+texto = 'Hola\nEsto es un poco de texto\nQue tengas un buen dia'
+
+with open(path, 'w', encoding='utf-8') as archivo:
+    archivo.write(texto)
+```
+
+### Copiar, mover y eliminar
+
+El módulo `shutil` copia archivos y carpetas; `os.replace()` puede mover un archivo. `os.remove()` elimina archivos, `os.rmdir()` elimina carpetas vacías y `shutil.rmtree()` elimina carpetas y su contenido.
+
+```python
+import os
+import shutil
+
+shutil.copyfile('assets/ejemplo.txt', 'assets/copia.txt')
+
+origen = 'ejemplo.txt'
+destino = 'assets/ejemplo.txt'
+if os.path.exists(destino):
+    print(f'Ya existe un archivo en {destino}')
+else:
+    os.replace(origen, destino)
+```
+
+Ten cuidado al usar operaciones de eliminación, especialmente `shutil.rmtree()`, porque borra recursivamente el contenido de una carpeta.
+
+## 27. Módulos propios
+
+Un módulo es un archivo Python que contiene código reutilizable. Se puede importar el módulo completo con un alias o importar funciones específicas.
+
+```python
+import Modulo as mensaje
+from Modulo import hola, despedida
+
+hola()
+despedida()
+```
+
+La instrucción `help('modules')` muestra los módulos disponibles en la instalación de Python.
+
 ## Conclusión
 
-Este archivo funciona como una guía introductoria a Python, cubriendo desde conceptos básicos como variables y salida por consola, hasta estructura de datos, ciclos, condiciones y funciones. Es una base ideal para comenzar a programar con Python.
+Este archivo funciona como una guía introductoria a Python, desde variables, strings y estructuras de datos hasta funciones, excepciones, archivos y módulos. Los ejemplos de `main.py` están comentados y sirven como referencia para practicar cada concepto.
