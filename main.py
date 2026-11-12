@@ -450,4 +450,42 @@
 # hola()
 # despedida()
 
-help('modules')
+# help('modules')
+
+# ** Practica piedra papel o tijera
+
+import random
+
+lista = ['piedra', 'papel', 'tijera']
+start_game = True
+
+
+def reiniciar_juego():
+	global reiniciar, start_game
+	reiniciar = input('Quieres intentar otra vez? si/no').lower()
+	if reiniciar == 'no':
+		start_game = False
+	elif reiniciar == 'si':
+		pass
+	else:
+		print('no es una opcion valida, adios.')
+		start_game = False
+
+while start_game:
+	eleccion_jugador = input('Piedra, papel o tijera? ').lower()
+	eleccion_maquina = lista[random.randint(0, len(lista)-1)]
+
+	if eleccion_jugador == eleccion_maquina:
+		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina} es un empate')
+		reiniciar_juego()
+	elif (eleccion_jugador == 'piedra' and eleccion_maquina == 'tijera') or (eleccion_jugador == 'tijera' and eleccion_maquina == 'papel') or (eleccion_jugador == 'papel' and eleccion_maquina == 'piedra'):
+		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina}')
+		print('Felicidades ganaste.')
+		reiniciar_juego()
+	elif (eleccion_jugador == 'tijera' and eleccion_maquina == 'piedra') or (eleccion_jugador == 'piedra' and eleccion_maquina == 'papel') or (eleccion_jugador == 'papel' and eleccion_maquina == 'tijera'):
+		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina}')
+		print('Lo siento has perdido.')
+		reiniciar_juego()
+	else:
+		print('Ingresa una opcion valida')
+		pass
