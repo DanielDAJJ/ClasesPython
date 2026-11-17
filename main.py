@@ -454,38 +454,104 @@
 
 # ** Practica piedra papel o tijera
 
-import random
+# import random
+#
+# lista = ['piedra', 'papel', 'tijera']
+# start_game = True
+#
+#
+# def reiniciar_juego():
+# 	global reiniciar, start_game
+# 	reiniciar = input('Quieres intentar otra vez? si/no').lower()
+# 	if reiniciar == 'no':
+# 		start_game = False
+# 	elif reiniciar == 'si':
+# 		pass
+# 	else:
+# 		print('no es una opcion valida, adios.')
+# 		start_game = False
+#
+# while start_game:
+# 	eleccion_jugador = input('Piedra, papel o tijera? ').lower()
+# 	eleccion_maquina = lista[random.randint(0, len(lista)-1)]
+#
+# 	if eleccion_jugador == eleccion_maquina:
+# 		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina} es un empate')
+# 		reiniciar_juego()
+# 	elif (eleccion_jugador == 'piedra' and eleccion_maquina == 'tijera') or (eleccion_jugador == 'tijera' and eleccion_maquina == 'papel') or (eleccion_jugador == 'papel' and eleccion_maquina == 'piedra'):
+# 		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina}')
+# 		print('Felicidades ganaste.')
+# 		reiniciar_juego()
+# 	elif (eleccion_jugador == 'tijera' and eleccion_maquina == 'piedra') or (eleccion_jugador == 'piedra' and eleccion_maquina == 'papel') or (eleccion_jugador == 'papel' and eleccion_maquina == 'tijera'):
+# 		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina}')
+# 		print('Lo siento has perdido.')
+# 		reiniciar_juego()
+# 	else:
+# 		print('Ingresa una opcion valida')
+# 		pass
 
-lista = ['piedra', 'papel', 'tijera']
-start_game = True
+# ** Practica juego de preguntas y respuestas
 
+# def new_game():
+# 	respuestas = []
+# 	respuestas_correctas = 0
+# 	pregunta_num = 0
+# 	for key in preguntas:
+# 		print('--------------------------------------------------------------')
+# 		print(key)
+# 		for i in opciones[pregunta_num]:
+# 			print(i)
+# 		respuesta = input('Ingresa (A, B, C, D): ').upper()
+# 		respuestas_correctas += check_answer(preguntas.get(key), respuesta)
+# 		respuestas.append(respuesta)
+# 		pregunta_num += 1
+# 	display_score(respuestas_correctas, respuestas)
+#
+# def check_answer(res_correcta, res):
+# 	if res_correcta == res:
+# 		print('Correcto!')
+# 		return 1
+# 	else:
+# 		print('Incorrecto!')
+# 		return 0
+#
+# def display_score(res_correcta, res):
+# 	print('-----------------------------------------------------------')
+# 	print('RESULTADOS')
+# 	print('------------------------------------------------------------')
+# 	print('Respuestas correctas: ', end=' ')
+# 	for i in preguntas:
+# 		print(preguntas.get(i), end=' ')
+# 	print()
+# 	print('Tus respuestas: ', end=' ')
+# 	for i in res:
+# 		print(i, end=' ')
+# 	print()
+#
+# 	puntaje = int((res_correcta/len(res))*100)
+# 	print(f'Puntaje: {puntaje} %', end=' ')
+#
+# def play_game():
+# 	respuesta = input('Quieres jugar de nuevo? (SI/NO): ').upper()
+# 	if respuesta == 'SI':
+# 		return True
+# 	else:
+# 		return False
+#
+# preguntas = {
+# 	'Que idioma se habla en Brasil? ': 'A',
+# 	'Cual es el oceano mas grande del mundo? ': 'B',
+# 	'Cual es la estrella mas cercana a la tierra? ': 'C',
+# 	'Cual es el segundo pais mas grande del mundo? ' : 'A'
+# }
+#
+# opciones = [['A. Portugues','B. Español', 'C. Brasilero', 'D. Ingles'],
+#             ['A. Atlantico', 'B. Pacifico', 'C. Artico', 'D. Indigo'],
+#             ['A. La Luna', 'B. Alfa Centauri', 'C. El sol', 'D. Ninguna'],
+#             ['A. Canada', 'B. Rusia', 'C. EE.UU', 'D. China']]
+#
+# new_game()
+# while play_game():
+# 	new_game()
+# print('GAME OVER')
 
-def reiniciar_juego():
-	global reiniciar, start_game
-	reiniciar = input('Quieres intentar otra vez? si/no').lower()
-	if reiniciar == 'no':
-		start_game = False
-	elif reiniciar == 'si':
-		pass
-	else:
-		print('no es una opcion valida, adios.')
-		start_game = False
-
-while start_game:
-	eleccion_jugador = input('Piedra, papel o tijera? ').lower()
-	eleccion_maquina = lista[random.randint(0, len(lista)-1)]
-
-	if eleccion_jugador == eleccion_maquina:
-		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina} es un empate')
-		reiniciar_juego()
-	elif (eleccion_jugador == 'piedra' and eleccion_maquina == 'tijera') or (eleccion_jugador == 'tijera' and eleccion_maquina == 'papel') or (eleccion_jugador == 'papel' and eleccion_maquina == 'piedra'):
-		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina}')
-		print('Felicidades ganaste.')
-		reiniciar_juego()
-	elif (eleccion_jugador == 'tijera' and eleccion_maquina == 'piedra') or (eleccion_jugador == 'piedra' and eleccion_maquina == 'papel') or (eleccion_jugador == 'papel' and eleccion_maquina == 'tijera'):
-		print(f'el jugador a eligido {eleccion_jugador} y la maquina {eleccion_maquina}')
-		print('Lo siento has perdido.')
-		reiniciar_juego()
-	else:
-		print('Ingresa una opcion valida')
-		pass
